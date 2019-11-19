@@ -1,0 +1,13 @@
+<div *ngFor="let animal of animals">
+    <h1>{{animal.name}} - {{animal.color}}</h1>
+</div>
+<div>
+    <input type="text" placeholder="Name" [(ngModel)]="name_m">
+    <input type="text" placeholder="Color" [(ngModel)]="color_m">
+    <input type="button" (click)="change_meo()">
+</div>
+<div>
+    <input type="text" placeholder="Name" [(ngModel)]="name_c">
+    <input type="text" placeholder="Color" [(ngModel)]="color_c">
+    <input type="button" (click)="change_cho()">
+</div>

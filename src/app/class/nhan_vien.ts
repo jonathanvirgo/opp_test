@@ -9,18 +9,28 @@ export class cau_hinh {
     static luong_nhan_vien_part_time_theo_gio = 100000;
 }
 
- class Nhan_vien {
+ export abstract class Nhan_vien {
     protected ten: String;
     protected luong: number;
     constructor (ten){
         this.ten = ten;
     }
-    protected loai_nhan_vien(){
+    public loai_nhan_vien(){
     }
     public tinh_luong(){
     }
     log_thong_tin(){
         return "Nhân viên: "+this.ten+" Loại nhân viên: "+ this.loai_nhan_vien() +" Lương: "+ this.luong+" VND"
+    }
+    public get_ten(){
+        return this.ten;
+    }
+    public get_luong(){
+        return this.luong;
+    }
+    public get_gio_lam_them(){
+    }
+    public get_ngay_lam_them(){
     }
 }
 
@@ -41,6 +51,9 @@ export class Nhan_vien_full_time extends Nhan_vien{
         }else{
             return "Sếp" + (this.ngaylamthem > 0 ? (" có " +this.ngaylamthem +" ngày làm thêm") : "")
         }
+    }
+    get_ngay_lam_them(){
+        return this.ngaylamthem;
     }
     tinh_luong(){
         if(this.loai_chuc_vu == cau_hinh.nhan_vien_linh){
@@ -63,4 +76,13 @@ export class Nhan_vien_part_time extends Nhan_vien {
     tinh_luong(){
          this.luong = cau_hinh.luong_nhan_vien_part_time_theo_gio*this.gio_lam_viec;
     }
+    get_gio_lam_them(){
+        return this.gio_lam_viec;
+    }
+}
+export class lop_khac{
+    public id : string;
+    get_abc(){
+        console.log(cau_hinh)
+    }   
 }

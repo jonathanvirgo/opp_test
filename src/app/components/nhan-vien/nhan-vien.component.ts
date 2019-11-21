@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Nhan_vien_full_time, Nhan_vien_part_time, cau_hinh, Nhan_vien} from '../../class/nhan_vien';
+import { singleton } from '../../class/design_pattern/singleton';
+
 @Component({
   selector: 'app-nhan-vien',
   templateUrl: './nhan-vien.component.html',
@@ -16,16 +18,20 @@ export class NhanVienComponent implements OnInit {
   nv3 = new Nhan_vien_full_time("QD",15);
   nv4 = new Nhan_vien_part_time("Thom",100);
   nv : Nhan_vien[];
+  single = new singleton();
   constructor() { }
 
   ngOnInit() {
+    console.log("Singleton1", this.single.get_gia_tri());
     this.nv = [];
     this.nv1.setLoaiChucVu(cau_hinh.nhan_vien_sep);
     this.nv.push(this.nv1,this.nv2,this.nv3,this.nv4);
     console.log("NV",this.nv)
     this.nv.forEach(s => {
       s.tinh_luong();
-    })
+    });
+    let abc = new singleton();
+    console.log("Singleton2", abc.get_gia_tri());
   }
   them_vao_mang(){
     console.log("Du lieu",this.ten,this.loai,this.chuc_vu,this.ngay,this.gio);

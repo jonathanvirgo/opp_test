@@ -84,5 +84,5 @@ export class lop_khac{
     public id : string;
     get_abc(){
         console.log(cau_hinh)
-    }   
+    }
 }
